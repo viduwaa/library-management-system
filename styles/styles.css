@@ -1,10 +1,14 @@
+@import '../assets/fonts/fonts.css';
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'KoHo', sans-serif;
 }
 
 a{
+    display: block;
     text-decoration: none;
     color: #000;
 }
@@ -12,3 +16,13 @@ a{
 a:visited{
     color: inherit;
 }
+
+img{
+    display:block;
+    max-width: 100%;
+}
+
+li{
+    list-style: none;
+}
+

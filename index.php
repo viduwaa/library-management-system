@@ -1,8 +1,6 @@
 <?php
-require_once './includes/functions/db_connect.php';
-session_start();
+    session_start();   
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +8,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Library</title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/user-auth.css">
 </head>
 <body>
-    <?php
-    if (isset($_SESSION['user'])) {
-        echo '<h1>Welcome ' . $_SESSION['user']['first_name'] . '</h1>';
-        echo '<a href="pages/logout.php">Logout</a>';
-    } else {
-        include './includes/user-login.php';
-    }
-    ?>
-</body>
-</html>
+
+<?php
+    include('./includes/components/user-login.php')
+?>
+

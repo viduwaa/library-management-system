@@ -1,28 +1,37 @@
-@import '../assets/fonts/fonts.css';
+@import "../assets/fonts/fonts.css";
 
-*{
+:root {
+    --text: #0d080a;
+    --background: #f9f5f6;
+    --primary: #a77280;
+    --primary-light: #f4efef;
+    --secondary: #cdcdb1;
+    --secondary-light: #ece8e1;
+    --accent: #a2b488;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'KoHo', sans-serif;
+    font-family: "KoHo", sans-serif;
 }
 
-a{
+a {
     display: block;
     text-decoration: none;
     color: #000;
 }
 
-a:visited{
+a:visited {
     color: inherit;
 }
 
-img{
-    display:block;
+img {
+    display: block;
     max-width: 100%;
 }
 
-li{
+li {
     list-style: none;
 }
-

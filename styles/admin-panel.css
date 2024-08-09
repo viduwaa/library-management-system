@@ -16,7 +16,7 @@
   padding: 1rem;
 }
 .wrapper header nav img {
-  height: 150px;
+  height: 100px;
 }
 .wrapper header nav h2 {
   color: var(--text);
@@ -39,25 +39,35 @@
   background-color: var(--secondary-light);
   border-radius: 0.5rem;
   width: 90%;
-  padding: 0.5rem;
+  padding-inline: 0.5rem;
+  padding-top: 0.5rem;
   transition: all 0.3s ease;
   -webkit-box-shadow: 0px 15px 9px -9px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 15px 9px -9px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 15px 9px -9px rgba(0, 0, 0, 0.75);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+}
+.wrapper header nav ul li span {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-decoration-line: underline;
+  text-decoration-color: var(--primary);
 }
 .wrapper header nav ul li a {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
   width: 100%;
   display: flex;
   justify-content: center;
   font-weight: 600;
+  font-style: italic;
+  padding: 0.3rem;
+  background-color: var(--secondary);
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
 }
-.wrapper header nav ul li:hover {
+.wrapper header nav ul li a:hover {
   background-color: var(--accent);
-  color: var(--secondary-light);
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
 }
 .wrapper header nav ul li:last-child {
   margin-top: auto;
@@ -126,73 +136,71 @@
 }
 
 /* ################ */
-/* --BOOK SEARCH-- */
+/* --BOOK REGISTER-- */
 /* ################ */
-.book-search {
-  margin-top: 1rem;
-  border: 3px solid #8b8989;
-  padding: 1rem;
-  border-radius: 0.5rem;
+.book-register {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 1rem;
-  flex-wrap: wrap;
+  margin: 1rem auto;
 }
-.book-search label,
-.book-search input,
-.book-search select,
-.book-search button {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  padding-inline: 1rem;
-  padding-block: 0.4rem;
+.book-register h2 {
+  font-size: clamp(1.5rem, 1.5vw, 2rem);
+  color: var(--text);
 }
-.book-search label {
+.book-register form {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 1rem;
-  flex: 1.2;
+  position: relative;
 }
-.book-search select {
-  border-radius: 0.5rem;
-}
-.book-search input {
-  flex: 2.5;
-}
-.book-search button {
-  flex: 1.2;
-  cursor: pointer;
-}
-
-/* ################ */
-/* --SEARCH RESULTS-- */
-/* ################ */
-.result-wrapper {
-  margin-top: 1rem;
-}
-.result-wrapper h2 {
-  margin-bottom: 1rem;
-}
-.result-wrapper .search-results {
-  border: 3px solid #8b8989;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-.result-wrapper .search-results .book {
-  display: flex;
-}
-.result-wrapper .search-results .book-details {
+.book-register form .book-details {
   flex: 3;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+.book-register form .book-details label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+}
+.book-register form .book-details input {
+  width: 70%;
+}
+.book-register form .book-img {
+  flex: 1;
+  height: 180px;
+}
+.book-register form .book-img img {
+  height: 100%;
+  border: 1px solid black;
+  object-fit: contain;
+}
+.book-register form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
   font-size: clamp(1rem, 1.5vw, 1.2rem);
 }
-.result-wrapper .search-results .book-img {
-  height: 150px;
-  width: 120px;
-  border: 1px solid black;
+.book-register form button {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  width: 100px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  background-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.book-register form button:hover {
+  background-color: var(--primary);
 }
 
-/*# sourceMappingURL=user-panel.css.map */
+/*# sourceMappingURL=admin-panel.css.map */

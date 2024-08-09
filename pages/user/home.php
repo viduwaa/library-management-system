@@ -32,6 +32,28 @@ include('../../includes/components/user-panel-head.php')
                 <img class="book-img" src="" alt="book img">
             </div>
         </div>
+        <div class="search-results">
+            <div class="book">
+                <div class="book-details">
+                    <h4>Book ID - </h4>
+                    <h4>Book Name - </h4>
+                    <h4>Author- </h4>
+                    <h4>Availability - </h4>
+                </div>
+                <img class="book-img" src="" alt="book img">
+            </div>
+        </div>
+        <div class="search-results">
+            <div class="book">
+                <div class="book-details">
+                    <h4>Book ID - </h4>
+                    <h4>Book Name - </h4>
+                    <h4>Author- </h4>
+                    <h4>Availability - </h4>
+                </div>
+                <img class="book-img" src="" alt="book img">
+            </div>
+        </div>
     </div>
 
 </main>

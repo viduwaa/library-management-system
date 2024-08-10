@@ -38,6 +38,12 @@ li {
     list-style: none;
 }
 
+.sucess{
+    color: green;
+    text-align: center;
+}
+
 .error{
     color: red;
+    text-align: center;
 }

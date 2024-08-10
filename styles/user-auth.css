@@ -59,6 +59,11 @@ main{
                 text-align: center;
             }
 
+            a{
+                color: #d48383;
+                text-decoration: underline;
+            }
+
             
         }
     }

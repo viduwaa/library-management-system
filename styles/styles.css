@@ -5,9 +5,11 @@
     --background: #f9f5f6;
     --primary: #a77280;
     --primary-light: #f4efef;
+    --primary-light-2: #e8dbdf;
     --secondary: #cdcdb1;
     --secondary-light: #ece8e1;
     --accent: #a2b488;
+    --border-line : #8b8989;
 }
 
 * {

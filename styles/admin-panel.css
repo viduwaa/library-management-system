@@ -55,7 +55,7 @@
   text-decoration-color: var(--primary);
 }
 .wrapper header nav ul li a {
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -65,6 +65,7 @@
   background-color: var(--secondary);
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
+  text-align: center;
 }
 .wrapper header nav ul li a:hover {
   background-color: var(--accent);
@@ -152,6 +153,8 @@
   display: flex;
   gap: 1rem;
   position: relative;
+  border: 3px solid var(--border-line);
+  padding: 1rem;
 }
 .book-register form .book-details {
   flex: 3;
@@ -186,7 +189,7 @@
 }
 .book-register form button {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   right: 50px;
   width: 100px;
   padding: 0.5rem;
@@ -201,6 +204,372 @@
 }
 .book-register form button:hover {
   background-color: var(--primary);
+}
+
+/* ################ */
+/* --BOOK Search-- */
+/* ################ */
+.book-search {
+  margin-top: 1rem;
+  border: 3px solid var(--border-line);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.book-search label,
+.book-search input,
+.book-search select,
+.book-search button {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  padding-inline: 1rem;
+  padding-block: 0.4rem;
+}
+.book-search label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex: 1.5;
+}
+.book-search select {
+  border-radius: 0.5rem;
+}
+.book-search input {
+  flex: 2;
+}
+.book-search button {
+  flex: 1;
+  cursor: pointer;
+}
+
+.result-wrapper {
+  margin-top: 1rem;
+}
+.result-wrapper h2 {
+  margin-bottom: 1rem;
+}
+.result-wrapper .search-results {
+  border: 3px solid var(--border-line);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.result-wrapper .search-results .book {
+  display: flex;
+}
+.result-wrapper .search-results .book-details {
+  flex: 3;
+  display: flex;
+  gap: 10vw;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+.result-wrapper .search-results .book-details label,
+.result-wrapper .search-results .book-details input,
+.result-wrapper .search-results .book-details select,
+.result-wrapper .search-results .book-details button {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  padding-inline: 1rem;
+  padding-block: 0.4rem;
+}
+.result-wrapper .search-results .book-details form {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+.result-wrapper .search-results .book-details form label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+}
+.result-wrapper .search-results .book-details form input {
+  width: 70%;
+  margin-left: auto;
+}
+.result-wrapper .search-results .book-details form button {
+  width: 100px;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  margin-left: auto;
+}
+.result-wrapper .search-results .book-details form button:hover {
+  background-color: var(--primary);
+}
+.result-wrapper .search-results .book-img {
+  flex: 1;
+  border: 1px solid black;
+}
+
+/* ################ */
+/* --BOOK LENDING-- */
+/* ################ */
+.book-lending {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem auto;
+}
+.book-lending h2 {
+  font-size: clamp(1.5rem, 1.5vw, 2rem);
+  color: var(--text);
+}
+.book-lending form {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+.book-lending form .book-details {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.book-lending form .book-details label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+}
+.book-lending form .book-details input {
+  width: 70%;
+}
+.book-lending form .book-img {
+  flex: 1;
+  height: 180px;
+}
+.book-lending form .book-img img {
+  height: 100%;
+  border: 1px solid black;
+  object-fit: contain;
+}
+.book-lending form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+.book-lending form button {
+  width: fit-content;
+  padding: 0.5rem;
+  margin-left: auto;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  background-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.book-lending form button:hover {
+  background-color: var(--primary);
+}
+
+.lend-success h2 {
+  color: limegreen;
+}
+.lend-success .lend-details {
+  margin-top: 1rem;
+  border: 3px solid var(--border-line);
+  padding: 0.5rem;
+  display: flex;
+}
+.lend-success .lend-details div {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+}
+.lend-success .lend-details div:nth-child(2) {
+  flex: 1;
+}
+
+/* ################ */
+/* --BORROWED BOOKS-- */
+/* ################ */
+.borrowed h2 {
+  margin-bottom: 1rem;
+}
+.borrowed table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border: 3px solid var(--border-line);
+  border-radius: 0.5rem;
+}
+.borrowed table th, .borrowed table td {
+  border: 1px solid var(--border-line);
+  padding: 0.5rem;
+  text-align: center;
+}
+.borrowed table th {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+.borrowed table tr:nth-child(even) {
+  background-color: var(--secondary-light);
+}
+.borrowed table tr:hover {
+  background-color: var(--primary-light-2);
+}
+.borrowed table button {
+  padding: 0.5rem;
+  width: 60%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.borrowed table button:hover {
+  background-color: var(--primary);
+}
+.borrowed table tbody tr {
+  height: 50px;
+}
+
+/* ################ */
+/* --USER SEARCH-- */
+/* ################ */
+.user-table {
+  margin-top: 1rem;
+  border: 3px solid var(--border-line);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.user-table h2 {
+  margin-bottom: 1rem;
+}
+.user-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.user-table table th, .user-table table td {
+  border: 1px solid var(--border-line);
+  padding: 0.5rem;
+  text-align: center;
+}
+.user-table table th {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+.user-table table tr:nth-child(even) {
+  background-color: var(--secondary-light);
+}
+.user-table table tr:hover {
+  background-color: var(--primary-light-2);
+}
+.user-table table button {
+  padding: 0.5rem;
+  width: 60%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.user-table table button:hover {
+  background-color: var(--primary);
+}
+.user-table table thead th:last-child {
+  width: 100px;
+}
+.user-table table tbody tr {
+  height: 50px;
+}
+
+/* ################ */
+/* --USER DETAILS-- */
+/* ################ */
+.user-details {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+.user-details label,
+.user-details input,
+.user-details select,
+.user-details button {
+  padding-inline: 1rem;
+  padding-block: 0.4rem;
+}
+.user-details form {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+.user-details form label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+}
+.user-details form input {
+  width: 70%;
+  margin-left: auto;
+}
+.user-details form div {
+  margin-inline: 1rem;
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.user-details form div button {
+  display: block;
+  width: 100px;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+.user-details form div button:hover {
+  background-color: var(--primary);
+  color: var(--background);
+}
+.user-details form div button:first-child {
+  margin-right: auto;
+}
+.user-details .user-books {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.user-details .user-books h2 {
+  font-size: 1.5rem;
+}
+.user-details .user-books div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 3px solid var(--border-line);
+  border-radius: 0.5rem;
+}
+.user-details .user-books div h3 {
+  font-size: 1.2rem;
 }
 
 /*# sourceMappingURL=admin-panel.css.map */

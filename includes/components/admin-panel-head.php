@@ -27,7 +27,7 @@
                             <a href="./user-search.php">User Search</a>
                             <a href="./user-details.php">User Details & Update</a>
                         </li>
-                        <li><a href="">Log Out</a></li>
+                        <li><a href="../../includes/functions/logout.php">Log Out</a></li>
                     </ul>
                 </div>
             </nav>
@@ -44,7 +44,7 @@
                     <ul>
                         <li><a href="./home.php">Book Search</a></li>
                         <li><a href="./borrowed-books.php">My Borrowed Books</a></li>
-                        <li><a href="">Log Out</a></li>
+                        <li><a href="../../includes/functions/logout.php">Log Out</a></li>
                     </ul>
                 </div>
             </nav>

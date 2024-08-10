@@ -1,5 +1,6 @@
 <?php
-include('../../includes/components/admin-panel-head.php')
+include('../../includes/components/admin-panel-head.php');
+include('../../includes/functions/check_admin.php');
 ?>
 <main>
     <div>

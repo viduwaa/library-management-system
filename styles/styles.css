@@ -38,6 +38,11 @@ li {
     list-style: none;
 }
 
+.response{
+    font-style: italic;
+    font-weight: 700;
+}
+
 .sucess{
     color: green;
     text-align: center;

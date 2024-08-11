@@ -427,7 +427,7 @@
     }
 }
 
-.lend-success{
+.register-success,.lend-success{
     h2{
         color: limegreen;
     }
@@ -445,12 +445,24 @@
             gap: 1rem;
             padding: 1rem;
             border-radius: 0.5rem;
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
             font-weight: 600;
+
+            h3:not(:first-child){
+                font-size: clamp(1rem, 1.5vw, 1.2rem);
+                font-weight: 400;
+            }
         }
     
         div:nth-child(2){
             flex: 1;
+            display: block;
+            height: 180px;
+            padding: 0;
+            img{
+                height: 100%;
+                border: 1px solid black;
+                object-fit: contain;
+            }
         }
     
     }

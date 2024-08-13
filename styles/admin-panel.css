@@ -270,9 +270,12 @@
 .result-wrapper .search-results .book-details input,
 .result-wrapper .search-results .book-details select,
 .result-wrapper .search-results .book-details button {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  padding-inline: 1rem;
-  padding-block: 0.4rem;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  padding-inline: 0.4rem;
+  padding-block: 0.2rem;
+}
+.result-wrapper .search-results .book-details .hidden-input {
+  display: none;
 }
 .result-wrapper .search-results .book-details form {
   flex: 3;
@@ -283,7 +286,6 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 600;
 }
 .result-wrapper .search-results .book-details form input {
@@ -307,7 +309,12 @@
 }
 .result-wrapper .search-results .book-img {
   flex: 1;
+  height: 250px;
+}
+.result-wrapper .search-results .book-img img {
+  height: 100%;
   border: 1px solid black;
+  object-fit: contain;
 }
 
 /* ################ */

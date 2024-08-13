@@ -42,8 +42,16 @@
                 <div class="sidebar-links">
                     <h2>Welcome User !</h2>
                     <ul>
-                        <li><a href="./home.php">Book Search</a></li>
-                        <li><a href="./borrowed-books.php">My Borrowed Books</a></li>
+                        <li><span>Book Management</span>
+                            <a href="./new-book.php">Add a New Book</a>
+                            <a href="./book-search.php">Book Search & Update</a>
+                            <a href="./lending.php">Book Lending</a>
+                            <a href="./borrowed.php">Borrowed Books & Recieving</a>
+                        </li>
+                        <li><span>User Management</span>
+                            <a href="./user-search.php">User Search</a>
+                            <a href="./user-details.php">User Details & Update</a>
+                        </li>
                         <li><a href="../../includes/functions/logout.php">Log Out</a></li>
                     </ul>
                 </div>

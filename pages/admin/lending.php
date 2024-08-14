@@ -40,6 +40,11 @@ if (isset($_POST['lend'])) {
 
             //show the success message
             if(mysqli_query($conn, $sqlInsert)){
+                 //reduce the quantity from books
+                $sqlUpdate = "UPDATE books SET quantity = quantity - 1 WHERE books_id = $book_id";
+                mysqli_query($conn, $sqlUpdate);
+
+                //display the response
                 $response = "<div class=\"lend-success\">
                         <h2>Book Lending Successfull</h2>
                         <div class=\"lend-details\">

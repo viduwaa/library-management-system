@@ -1,144 +1,83 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Aug 06, 2024 at 03:11 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- MySQL Workbench Forward Engineering
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema library-system
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema library-system
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `library-system` DEFAULT CHARACTER SET utf8 ;
+USE `library-system` ;
+
+-- -----------------------------------------------------
+-- Table `library-system`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `library-system`.`users` (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `mobile_no` VARCHAR(45) NULL,
+  `password` TEXT NULL,
+  UNIQUE INDEX `mobile_no_UNIQUE` (`mobile_no` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
+  PRIMARY KEY (`user_id`))
+ENGINE = InnoDB;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+-- -----------------------------------------------------
+-- Table `library-system`.`books`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `library-system`.`books` (
+  `books_id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `author` VARCHAR(45) NULL,
+  `genre` VARCHAR(45) NULL,
+  `cover` LONGTEXT NULL,
+  `quantity` INT NULL,
+  PRIMARY KEY (`books_id`))
+ENGINE = InnoDB;
 
---
--- Database: `library-system`
---
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `library-system`.`borrowed_books`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `library-system`.`borrowed_books` (
+  `book_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `borrow_date` DATETIME NULL,
+  `return_date` DATETIME NULL,
+  PRIMARY KEY (`book_id`, `user_id`),
+  INDEX `fk_books_has_users_books_idx` (`book_id` ASC) ,
+  INDEX `users_have_books_idx` (`user_id` ASC) ,
+  CONSTRAINT `fk_books_has_users_books`
+    FOREIGN KEY (`book_id`)
+    REFERENCES `library-system`.`books` (`books_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `users_have_books`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `library-system`.`users` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
---
--- Table structure for table `admin`
---
 
-CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL,
-  `admin_name` varchar(45) DEFAULT NULL,
-  `admin_password` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+-- -----------------------------------------------------
+-- Table `library-system`.`admin`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `library-system`.`admin` (
+  `admin_id` INT NOT NULL AUTO_INCREMENT,
+  `admin_name` VARCHAR(45) NULL,
+  `admin_password` TEXT NULL,
+  PRIMARY KEY (`admin_id`))
+ENGINE = InnoDB;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `books`
---
-
-CREATE TABLE `books` (
-  `books_id` int(11) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `author` varchar(45) DEFAULT NULL,
-  `genre` varchar(45) DEFAULT NULL,
-  `cover` longtext DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `borrowed_books`
---
-
-CREATE TABLE `borrowed_books` (
-  `book_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `borrow_date` datetime DEFAULT NULL,
-  `return_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `mobile_no` varchar(45) DEFAULT NULL,
-  `password` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `books`
---
-ALTER TABLE `books`
-  ADD PRIMARY KEY (`books_id`);
-
---
--- Indexes for table `borrowed_books`
---
-ALTER TABLE `borrowed_books`
-  ADD PRIMARY KEY (`book_id`,`user_id`),
-  ADD KEY `fk_books_has_users_users1_idx` (`user_id`),
-  ADD KEY `fk_books_has_users_books_idx` (`book_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `books`
---
-ALTER TABLE `books`
-  MODIFY `books_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `borrowed_books`
---
-ALTER TABLE `borrowed_books`
-  ADD CONSTRAINT `fk_books_has_users_books` FOREIGN KEY (`book_id`) REFERENCES `books` (`books_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_books_has_users_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

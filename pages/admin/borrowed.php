@@ -4,13 +4,15 @@ include('../../includes/functions/check_admin.php');
 
 $error = null;
 $html = null;
+$sucess = null;
+
 
 // Function to process the results of the SQL query
 function processResults($resultBookID) {
     $html = '';
     if (mysqli_num_rows($resultBookID) > 0) {
         while ($row = mysqli_fetch_assoc($resultBookID)) {
-            $checkDue = $row['return_date'] == null ? '<button>Receive</button>' : $row['return_date'];
+            $checkDue = $row['return_date'] == null ? '<button type="submit" name="recieved">Receive</button>' : $row['return_date'];
             $html .= '<form action="borrowed.php" method="post">
                         <tr>
                             <td>' . $row['book_id'] . '</td>
@@ -18,13 +20,15 @@ function processResults($resultBookID) {
                             <td>' . $row['username'] . '</td>
                             <td>' . $row['mobile_no'] . '</td>
                             <td>' . $row['borrow_date'] . '</td>
-                            <td>' . $checkDue . '</td>
-                            <td>Yes</td>
+                            <td> 
+                                <input type="hidden" name="b-id" value="' . $row['book_id'] . '">
+                                <input type="hidden" name="u-id" value="' . $row['user_id'] . '">' . $checkDue . '
+                            </td>
                         </tr>
                       </form>';
         }
     } else {
-        $html .= '<tr><td colspan="7">No results found.</td></tr>';
+        $html .= '<tr><td colspan="6">No results found.</td></tr>';
     }
     return $html;
 }
@@ -82,6 +86,40 @@ if (isset($_POST['search-submit'])) {
 }
 
 
+// Check if the book has been received
+if(isset($_POST['recieved'])){
+    // Get the book ID and user ID from the form
+    $book_id = $_POST['b-id'];
+    $user_id = $_POST['u-id'];
+
+    // Update the borrowed_books table to set the return date
+    $sqlRecieve = "UPDATE borrowed_books SET return_date = NOW() WHERE book_id = $book_id AND user_id = $user_id";
+    $result = mysqli_query($conn, $sqlRecieve);
+
+    // Update the books table to increase the quantity
+    $sqlQuantity = "UPDATE books SET quantity = quantity + 1 WHERE books_id = $book_id";
+    $resultQuantity = mysqli_query($conn, $sqlQuantity);
+
+    // Query to get the details of the received book
+    $sqlRecieved = "SELECT bb.*, b.name, u.username, u.mobile_no 
+                    FROM borrowed_books bb
+                    JOIN books b ON bb.book_id = b.books_id 
+                    JOIN users u ON bb.user_id = u.user_id
+                    WHERE bb.book_id = $book_id AND bb.user_id = $user_id";
+
+    $resultRecieved = mysqli_query($conn, $sqlRecieved);
+
+    // Check if all queries were successful
+    if($result && $resultQuantity && $resultRecieved){
+        $sucess = '<h3 class="sucess">Book received successfully!</h3>';
+        $html = processResults($resultRecieved);
+    } else {
+        $error = '<h3 class="warning">Error receiving book!</h3>';
+    }
+}
+
+
+
 ?>
 <main>
     <div>
@@ -98,7 +136,7 @@ if (isset($_POST['search-submit'])) {
             <input type="text" name="search" required>
             <button type="submit" name="search-submit">Search</button>
         </form>
-        <?php echo $error; ?>
+        <?php echo $error,$sucess; ?>
     </div>
 
     <div class="borrowed">
@@ -112,11 +150,34 @@ if (isset($_POST['search-submit'])) {
                     <th>Mobile No.</th>
                     <th>Lend Date</th>
                     <th>Return Date</th>
-                    <th>Is due</th>
                 </tr>
             </thead>
             <tbody>
                 <?php echo $html; ?>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>                
             </tbody>
         </table>
     </div>

@@ -27,7 +27,7 @@ if (isset($_POST['lend'])) {
         $response = "<span class=\"error\">User not found</span>";
     } else {
         // Check if the book is already borrowed by the user
-        $sqlCheck = "SELECT * FROM borrowed_books WHERE book_id = $book_id AND user_id = $user_id";
+        $sqlCheck = "SELECT * FROM borrowed_books WHERE book_id = $book_id AND user_id = $user_id AND return_date IS NULL";
         $result = mysqli_query($conn, $sqlCheck);
 
         if (mysqli_num_rows($result) > 0) {

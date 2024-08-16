@@ -495,7 +495,6 @@
 }
 .user-table table button {
   padding: 0.5rem;
-  width: 60%;
   border: none;
   border-radius: 0.5rem;
   background-color: var(--accent);
@@ -543,6 +542,7 @@
 .user-details form input {
   width: 70%;
   margin-left: auto;
+  font-size: 1rem;
 }
 .user-details form div {
   margin-inline: 1rem;
@@ -576,17 +576,32 @@
 .user-details .user-books h2 {
   font-size: 1.5rem;
 }
-.user-details .user-books div {
+.user-details .user-books .book-details {
   display: flex;
-  flex-direction: column;
   gap: 0.4rem;
   margin-top: 1rem;
   padding: 1rem;
   border: 3px solid var(--border-line);
   border-radius: 0.5rem;
 }
-.user-details .user-books div h3 {
+.user-details .user-books .book-details h3 {
   font-size: 1.2rem;
+  font-weight: 400;
+}
+.user-details .user-books .book-details div:first-child {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.user-details .user-books .book-details div:last-child {
+  flex: 1;
+  height: 200px;
+}
+.user-details .user-books .book-details div:last-child img {
+  height: 100%;
+  object-fit: contain;
+  margin: auto;
 }
 
 /*# sourceMappingURL=admin-panel.css.map */

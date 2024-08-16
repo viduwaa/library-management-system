@@ -93,7 +93,7 @@ if(isset($_POST['recieved'])){
     $user_id = $_POST['u-id'];
 
     // Update the borrowed_books table to set the return date
-    $sqlRecieve = "UPDATE borrowed_books SET return_date = NOW() WHERE book_id = $book_id AND user_id = $user_id";
+    $sqlRecieve = "UPDATE borrowed_books SET return_date = NOW() WHERE book_id = $book_id AND user_id = $user_id AND return_date IS NULL";
     $result = mysqli_query($conn, $sqlRecieve);
 
     // Update the books table to increase the quantity
@@ -153,31 +153,21 @@ if(isset($_POST['recieved'])){
                 </tr>
             </thead>
             <tbody>
-                <?php echo $html; ?>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>                
+                <?php if ($html) {
+                    echo $html;
+                } else {
+                    for ($i = 0; $i < 5; $i++){
+                        echo "<tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>";
+                    }
+                } ?>
+                               
             </tbody>
         </table>
     </div>

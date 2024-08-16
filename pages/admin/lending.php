@@ -90,3 +90,6 @@ if (isset($_POST['lend'])) {
 
     <?php echo $response; ?>
 </main>
+<script>
+    document.title = "Book Lending";
+</script>

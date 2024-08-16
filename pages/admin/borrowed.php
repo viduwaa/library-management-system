@@ -172,3 +172,6 @@ if(isset($_POST['recieved'])){
         </table>
     </div>
 </main>
+<script>
+    document.title = "Book Recieving and Borrowed Books";
+</script>

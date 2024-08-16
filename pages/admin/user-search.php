@@ -94,3 +94,6 @@ if (isset($_POST['search-submit'])) {
         </table>
     </div>
 </main>
+<script>
+    document.title = "User Search";
+</script>

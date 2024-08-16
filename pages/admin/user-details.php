@@ -120,6 +120,8 @@ if (isset($_POST['update'])) {
     </div>
 </main>
 <script>
+    document.title = "User Details & Update";
+
     document.getElementById('edit').addEventListener('click', (e) => {
         e.preventDefault();
         const inputs = document.querySelectorAll('.edit');
@@ -127,4 +129,5 @@ if (isset($_POST['update'])) {
             input.disabled = false;
         })
     })
+
 </script>

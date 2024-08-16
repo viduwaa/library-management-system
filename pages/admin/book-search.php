@@ -130,3 +130,6 @@ if (isset($_POST['book-update'])) {
         ?>
     </div>
 </main>
+<script>
+    document.title = "Book Search";
+</script>

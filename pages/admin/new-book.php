@@ -100,4 +100,6 @@ if (isset($_POST["book-register"])) {
         }
 
     })
+
+    document.title = "New Book Registration";
 </script>

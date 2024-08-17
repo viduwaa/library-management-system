@@ -45,19 +45,26 @@ if (isset($_POST['open-details']) || isset($_POST['direct-search'])) {
                     </form>
                 </div>';
 
-        $sqlBorrowed = "SELECT bb.*, b.books_id, b.name, b.cover FROM borrowed_books bb JOIN books b ON bb.book_id = b.books_id WHERE user_id = " . $userRow['user_id'] . "";
+        $sqlBorrowed = "SELECT bb.*, b.books_id, b.name, b.cover FROM borrowed_books bb JOIN books b ON bb.book_id = b.books_id WHERE user_id = " . $userRow['user_id'] . " ORDER BY bb.borrow_date DESC";
 
         $resultBorrowed = mysqli_query($conn, $sqlBorrowed);
         if (mysqli_num_rows($resultBorrowed) > 0) {
             while ($rowBorrowed = mysqli_fetch_assoc($resultBorrowed)) {
-                $returnCheck = $rowBorrowed['return_date'] == null ? 'Not Returned' : 'Yes <br><br> Returned Date: ' . $rowBorrowed['return_date'];
+    
+                if($rowBorrowed['return_date'] == null){
+                    $rowBorrowed['return_date'] = "Not Returned";
+                    $returedClass = "";
+                }else{
+                    $rowBorrowed['return_date'] = $rowBorrowed['return_date'];
+                    $returedClass = "returned";
+                }
 
-                $htmlBooks .= '<div class="book-details">
+                $htmlBooks .= '<div class="book-details '. $returedClass.'">
                                         <div>
                                             <h3>Book ID - <span class="response">' . $rowBorrowed['books_id'] . '</span></h3>
                                             <h3>Book Title - <span class="response"> ' . $rowBorrowed['name'] . '</span></h3>
                                             <h3>Borrowed Date - <span class="response"> ' . $rowBorrowed['borrow_date'] . '</span></h3>
-                                            <h3>Returned - <span class="response"> ' . $returnCheck . '</span></h3>
+                                            <h3>Returned - <span class="response"> ' . $rowBorrowed['return_date'] . '</span></h3>
                                         </div>
                                         <div>
                                             <img src="' . $rowBorrowed['cover'] . '" alt="">

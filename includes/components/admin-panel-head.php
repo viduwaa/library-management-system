@@ -1,3 +1,18 @@
+<?php
+    require_once('../../includes/functions/db_connect.php');
+
+    $sqlBooksCount = "SELECT SUM(quantity) as book_count FROM books";
+    $sqlUsersCount = "SELECT COUNT(user_id) as user_count FROM users";
+    
+    // Execute the queries
+    $resultBooks = mysqli_query($conn, $sqlBooksCount);
+    $resultUsers = mysqli_query($conn, $sqlUsersCount);
+    
+    // Fetch the counts
+    $bookCount = mysqli_fetch_assoc($resultBooks)['book_count'];
+    $userCount = mysqli_fetch_assoc($resultUsers)['user_count'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +46,10 @@
                     </ul>
                 </div>
             </nav>
+            <div class="library-details">
+                <h3>Total Books:<?php echo $bookCount ?> </h3>
+                <h3>Total Users:<?php echo $userCount ?> </h3>
+            </div>
         </header>
 
         <img id="show-sidebar" src="../../assets/icons/menu.png" alt="show sidebar">
@@ -56,6 +75,10 @@
                     </ul>
                 </div>
             </nav>
+            <div class="library-details">
+                <h3>Total Books:<?php echo $bookCount ?> </h3>
+                <h3>Total Users:<?php echo $userCount ?> </h3>
+            </div>
         </header>
 
         <script>

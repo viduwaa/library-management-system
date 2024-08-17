@@ -47,7 +47,7 @@ if (isset($_POST['search-submit'])) {
                         FROM borrowed_books bb
                         JOIN books b ON bb.book_id = b.books_id 
                         JOIN users u ON bb.user_id = u.user_id
-                        WHERE bb.book_id = $search_value";
+                        WHERE bb.book_id = $search_value ORDER BY bb.borrow_date DESC";
             } else {
                 $error = '<h3 class="warning">Please enter a valid book ID!</h3>';
             }
@@ -58,7 +58,7 @@ if (isset($_POST['search-submit'])) {
                     FROM borrowed_books bb
                     JOIN books b ON bb.book_id = b.books_id 
                     JOIN users u ON bb.user_id = u.user_id
-                    WHERE u.mobile_no = '$search_value'";
+                    WHERE u.mobile_no = '$search_value' ORDER BY bb.borrow_date DESC";
             break;
 
         case 'user':
@@ -66,7 +66,7 @@ if (isset($_POST['search-submit'])) {
                     FROM borrowed_books bb
                     JOIN books b ON bb.book_id = b.books_id 
                     JOIN users u ON bb.user_id = u.user_id
-                    WHERE u.username LIKE '%$search_value%'";
+                    WHERE u.username LIKE '%$search_value%' ORDER BY bb.borrow_date DESC";
             break;
 
         default:

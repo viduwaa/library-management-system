@@ -73,6 +73,20 @@
 .wrapper header nav ul li:last-child {
   margin-top: auto;
 }
+.wrapper header .library-details {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  font-weight: 600;
+  font-style: italic;
+  padding: 0.3rem;
+  background-color: var(--secondary);
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  text-align: center;
+}
 @media (max-width: 768px) {
   .wrapper header {
     display: none;
@@ -383,16 +397,19 @@
   background-color: var(--primary);
 }
 
-.register-success h2, .lend-success h2 {
+.register-success h2,
+.lend-success h2 {
   color: limegreen;
 }
-.register-success .lend-details, .lend-success .lend-details {
+.register-success .lend-details,
+.lend-success .lend-details {
   margin-top: 1rem;
   border: 3px solid var(--border-line);
   padding: 0.5rem;
   display: flex;
 }
-.register-success .lend-details div, .lend-success .lend-details div {
+.register-success .lend-details div,
+.lend-success .lend-details div {
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -401,17 +418,20 @@
   border-radius: 0.5rem;
   font-weight: 600;
 }
-.register-success .lend-details div h3:not(:first-child), .lend-success .lend-details div h3:not(:first-child) {
+.register-success .lend-details div h3:not(:first-child),
+.lend-success .lend-details div h3:not(:first-child) {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 400;
 }
-.register-success .lend-details div:nth-child(2), .lend-success .lend-details div:nth-child(2) {
+.register-success .lend-details div:nth-child(2),
+.lend-success .lend-details div:nth-child(2) {
   flex: 1;
   display: block;
   height: 180px;
   padding: 0;
 }
-.register-success .lend-details div:nth-child(2) img, .lend-success .lend-details div:nth-child(2) img {
+.register-success .lend-details div:nth-child(2) img,
+.lend-success .lend-details div:nth-child(2) img {
   height: 100%;
   border: 1px solid black;
   object-fit: contain;
@@ -430,7 +450,8 @@
   border: 3px solid var(--border-line);
   border-radius: 0.5rem;
 }
-.borrowed table th, .borrowed table td {
+.borrowed table th,
+.borrowed table td {
   border: 1px solid var(--border-line);
   padding: 0.5rem;
   text-align: center;
@@ -478,7 +499,8 @@
   width: 100%;
   border-collapse: collapse;
 }
-.user-table table th, .user-table table td {
+.user-table table th,
+.user-table table td {
   border: 1px solid var(--border-line);
   padding: 0.5rem;
   text-align: center;

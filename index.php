@@ -18,6 +18,7 @@ if (isset($_POST["user-login"])) {
         if(mysqli_num_rows($result)>0){
             $_SESSION["user-mobile"] = $mobileno;
             $_SESSION["user-id"] = $row["user_id"];
+            $_SESSION["user-name"] = $row["username"];
             header("Location: ./pages/user/home.php");
         }else{
             $error = "<span class=\"error\">Invalid Mobile no or Password</span>";

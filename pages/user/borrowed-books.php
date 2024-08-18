@@ -1,6 +1,5 @@
 <?php
 include('../../includes/components/user-panel-head.php');
-include('../../includes/functions/check_user.php');
 
 $html = null;
 $sql = "SELECT bb.*, b.name, b.author , b.cover FROM borrowed_books bb JOIN books b ON bb.book_id = b.books_id WHERE user_id = " . $_SESSION['user-id']. " ORDER BY bb.borrow_date DESC";

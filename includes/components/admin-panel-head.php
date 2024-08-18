@@ -28,7 +28,7 @@
     <div class="wrapper">
         <header>
             <nav>
-                <img src="" alt="logo">
+                <img src="../../assets/icons/logo.webp" alt="logo">
                 <div class="sidebar-links">
                     <h2>Welcome Admin !</h2>
                     <ul>
@@ -57,7 +57,7 @@
         <header class="responsive-nav">
             <img id="close-sidebar" src="../../assets/icons/close.png" alt="">
             <nav>
-                <img src="" alt="logo">
+                <img src="../../assets/icons/logo.webp" alt="logo">
                 <div class="sidebar-links">
                     <h2>Welcome User !</h2>
                     <ul>

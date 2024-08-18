@@ -75,6 +75,7 @@
   overflow: clip;
   z-index: 10;
   transition: width 0.3s ease;
+  height: 100dvh;
   z-index: 100;
 }
 .wrapper .responsive-nav #close-sidebar {

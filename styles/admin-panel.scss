@@ -8,6 +8,7 @@
         flex: 1;
         background-color: var(--primary);
         height: 100dvh;
+        overflow: hidden;
 
         nav {
             display: flex;
@@ -16,7 +17,7 @@
             padding: 1rem;
 
             img {
-                height: 100px;
+                height: 140px;
             }
 
             h2 {

@@ -1,3 +1,6 @@
+<?php
+    include('../../includes/functions/check_user.php');   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +14,9 @@
     <div class="wrapper">
         <header>
             <nav>
-                <img src="" alt="logo">
+                <img src="../../assets/icons/logo.webp" alt="logo" alt="logo">
                 <div class="sidebar-links">
-                    <h2>Welcome User !</h2>
+                    <h2>Welcome <?php echo $_SESSION["user-name"] ?>!</h2>
                     <ul>
                         <li><a href="./home.php">Book Search</a></li>
                         <li><a href="./borrowed-books.php">My Borrowed Books</a></li>                        
@@ -28,7 +31,7 @@
         <header class="responsive-nav">
             <img id="close-sidebar" src="../../assets/icons/close.png" alt="">
             <nav>
-                <img src="" alt="logo">
+                <img src="../../assets/icons/logo.webp" alt="logo">
                 <div class="sidebar-links">
                     <h2>Welcome User !</h2>
                     <ul>

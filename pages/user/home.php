@@ -1,6 +1,5 @@
 <?php
 include('../../includes/components/user-panel-head.php');
-include('../../includes/functions/check_user.php');
 
 $html = null;
 

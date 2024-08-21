@@ -1,7 +1,8 @@
 main{
     max-width: 80%;
     margin-inline: auto;
-    margin-block: 2rem;
+    margin-top: 2rem;
+    margin-bottom: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,12 +77,29 @@ main{
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
 
         h1{
             color: #fff;
             border:10px double #fff;
             padding: 1rem;
             backdrop-filter: blur(10px);
+        }
+
+        h3{
+            position: absolute;
+            bottom: 1rem;
+            right: 0;
+            background: #f1f1f1;
+            border-top-left-radius:1rem ;    
+            border-bottom-left-radius:1rem ;    
+            padding: .5rem;
+            font-size: clamp(.8rem,1.5vw,1rem);
+
+            &:hover{
+                background: #d48383;
+                color: #fff;
+            }
         }
 
     }

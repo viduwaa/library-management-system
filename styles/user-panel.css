@@ -176,6 +176,7 @@
   justify-content: space-between;
   gap: 1rem;
   flex: 1.2;
+  white-space: nowrap;
 }
 .book-search select {
   border-radius: 0.5rem;

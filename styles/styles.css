@@ -68,3 +68,16 @@ li {
 .returned{
     opacity: 0.5;
 }
+
+footer{
+    background: #f1f1f1;
+    display: flex;
+
+    a{
+        color: var(--primary) !important;
+        width: fit-content;
+        margin: auto;
+        font-weight: 600;
+    }
+    
+}

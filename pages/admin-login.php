@@ -28,6 +28,7 @@
     <title>Welcome to Library</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/user-auth.css">
+    <link rel="shortcut icon" href="../assets/icons/logo.webp" type="image/x-icon">
 </head>
 <main>
     <div class="login-container">
@@ -45,5 +46,6 @@
 
     <div class="topic-container">
         <h1>Welcome to Library</h1>
+        <h3><a href="../">User Login</a></h3>
     </div>
 </main>

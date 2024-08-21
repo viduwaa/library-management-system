@@ -3,45 +3,45 @@ include('../../includes/components/user-panel-head.php');
 
 $html = null;
 
-if(isset($_POST['search'])){
+if (isset($_POST['search'])) {
     $search_by = $_POST['search-by'];
     $search_value = $_POST['search-value'];
 
-    if($search_by == 'title'){
+    if ($search_by == 'title') {
         $sql = "SELECT * FROM books WHERE name LIKE '%$search_value%' LIMIT 10";
-    }else if($search_by == 'author'){
+    } else if ($search_by == 'author') {
         $sql = "SELECT * FROM books WHERE author LIKE '%$search_value%' LIMIT 10";
-    }else if($search_by == 'category'){
+    } else if ($search_by == 'category') {
         $sql = "SELECT * FROM books WHERE genre LIKE '%$search_value%' LIMIT 10";
     }
 
-    try{
+    try {
         $result = mysqli_query($conn, $sql);
         $html = "";
-        if(!$result || mysqli_num_rows($result) == 0){
+        if (!$result || mysqli_num_rows($result) == 0) {
             $html = "<div class=\"search-results\">
                         <h4>No books found !</h4>
                     </div>";
-        }else if($result && mysqli_num_rows($result) > 0){
-            while($book = mysqli_fetch_assoc($result)){
+        } else if ($result && mysqli_num_rows($result) > 0) {
+            while ($book = mysqli_fetch_assoc($result)) {
                 $avaialability = $book['quantity'] > 0 ? '<span class="sucess response">Available</span>' : '<span class="error">Not Available</span>';
 
                 $html .= "<div class=\"search-results\">
                             <div class=\"book\">
                                 <div class=\"book-details\">
-                                    <h4>Book ID - <span class=\"response\">".$book['books_id']."</span></h4>
-                                    <h4>Book Name - <span class=\"response\">".$book['name']."</span></h4>
-                                    <h4>Author - <span class=\"response\">".$book['author']."</span></h4>
-                                    <h4>Availability - ".$avaialability."</h4>
+                                    <h4>Book ID - <span class=\"response\">" . $book['books_id'] . "</span></h4>
+                                    <h4>Book Name - <span class=\"response\">" . $book['name'] . "</span></h4>
+                                    <h4>Author - <span class=\"response\">" . $book['author'] . "</span></h4>
+                                    <h4>Availability - " . $avaialability . "</h4>
                                 </div>
                                 <div class=\"book-img\">
-                                    <img src=".$book['cover']." alt=\"book img\">
+                                    <img src=" . $book['cover'] . " alt=\"book img\">
                                 </div>                              
                             </div>
                         </div>";
             }
         }
-    }catch(Exception $e){
+    } catch (Exception $e) {
         $html = "<div class=\"search-results\">
                     <h4>Something went wrong !</h4>
                 </div>";
@@ -85,6 +85,10 @@ if(isset($_POST['search'])){
 
 </main>
 </div>
+
+<script>
+    document.title = "User Home";
+</script>
 </body>
 
 </html>

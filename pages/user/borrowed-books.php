@@ -41,3 +41,7 @@ if (mysqli_num_rows($result) > 0) {
         <?php echo $html; ?>
     </div>
 </main>
+
+<script>
+    document.title = "User Borrowed Books";
+</script>

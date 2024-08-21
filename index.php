@@ -38,6 +38,7 @@ if (isset($_POST["user-login"])) {
         <title>Welcome to Library</title>
         <link rel="stylesheet" href="./styles/styles.css">
         <link rel="stylesheet" href="./styles/user-auth.css">
+        <link rel="shortcut icon" href="./assets/icons/logo.webp" type="image/x-icon">
     </head>
 
     <body>
@@ -58,8 +59,10 @@ if (isset($_POST["user-login"])) {
 
             <div class="topic-container">
                 <h1>Welcome to Library</h1>
+                <h3><a href="./pages/admin-login.php">Admin Login</a></h3>
             </div>
         </main>
+        <footer> <a href="./pages/about.php">About Us</a></footer>
     </body>
 
 </html>

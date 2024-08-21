@@ -37,6 +37,7 @@ if (isset($_POST["signup"])) {
     <title>Welcome to Library</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/user-auth.css">
+    <link rel="shortcut icon" href="../assets/icons/logo.webp" type="image/x-icon">
 </head>
 
 <body>

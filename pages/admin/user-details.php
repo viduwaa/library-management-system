@@ -92,6 +92,18 @@ if (isset($_POST['update'])) {
     }
 }
 
+
+if (isset($_POST['remove'])) {
+    $user_id = $_POST['u-id'];
+
+    $sqlUpdate = "DELETE FROM users WHERE user_id =$user_id";
+    if (mysqli_query($conn, $sqlUpdate)) {
+        $response = '<h3 class="sucess">User removed successfully</h3>';
+    } else {
+        $error = mysqli_error($conn);
+    }
+}
+
 ?>
 <main>
     <div>

@@ -62,7 +62,6 @@ if (isset($_POST["user-login"])) {
                 <h3><a href="./pages/admin-login.php">Admin Login</a></h3>
             </div>
         </main>
-        <footer> <a href="./pages/about.php">About Us</a></footer>
     </body>
 
 </html>

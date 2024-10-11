@@ -30,6 +30,10 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                 </div>";
     }
+}else{
+    $html = "<div class=\"search-results\">
+                <h4>No books borrowed yet!</h4>
+            </div>";
 }
 
 

@@ -1,7 +1,16 @@
 <?php
 include('../../includes/components/user-panel-head.php');
+include('../../includes/functions/util_functions.php');
 
 $html = null;
+
+
+$defaultSQL = "SELECT * FROM books ORDER BY RAND() LIMIT 10";
+$result = mysqli_query($conn, $defaultSQL);
+if (mysqli_num_rows($result) > 0) {
+    $html = renderCard($result);
+}
+
 
 if (isset($_POST['search'])) {
     $search_by = $_POST['search-by'];
@@ -23,23 +32,7 @@ if (isset($_POST['search'])) {
                         <h4>No books found !</h4>
                     </div>";
         } else if ($result && mysqli_num_rows($result) > 0) {
-            while ($book = mysqli_fetch_assoc($result)) {
-                $avaialability = $book['quantity'] > 0 ? '<span class="sucess response">Available</span>' : '<span class="error">Not Available</span>';
-
-                $html .= "<div class=\"search-results\">
-                            <div class=\"book\">
-                                <div class=\"book-details\">
-                                    <h4>Book ID - <span class=\"response\">" . $book['books_id'] . "</span></h4>
-                                    <h4>Book Name - <span class=\"response\">" . $book['name'] . "</span></h4>
-                                    <h4>Author - <span class=\"response\">" . $book['author'] . "</span></h4>
-                                    <h4>Availability - " . $avaialability . "</h4>
-                                </div>
-                                <div class=\"book-img\">
-                                    <img src=" . $book['cover'] . " alt=\"book img\">
-                                </div>                              
-                            </div>
-                        </div>";
-            }
+            $html = renderCard($result);
         }
     } catch (Exception $e) {
         $html = "<div class=\"search-results\">
@@ -70,6 +63,9 @@ if (isset($_POST['search'])) {
     <div class="result-wrapper">
         <h2>Search Results:</h2>
         <?php echo $html; ?>
+
+       <!-- Result Card -->
+
         <!-- <div class="search-results">
             <div class="book">
                 <div class="book-details">
@@ -81,6 +77,8 @@ if (isset($_POST['search'])) {
                 <img class="book-img" src="" alt="book img">
             </div>
         </div> -->
+
+        <!--End of Result Card -->
     </div>
 
 </main>

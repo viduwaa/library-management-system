@@ -52,13 +52,14 @@ if (isset($_POST["user-login"])) {
                         <input type="password" name="password" placeholder="Password" required>
                         <?php echo $error; ?>
                         <button type="submit" name="user-login">Login</button>
-                        <p>Don't have an account ? <a href="./pages/user-signup.php">Sign up</a></p>
+                        <a href="forgot-password.php"><p>Forogt Password</p></a>
+                        <p>Don't have an account ?<a href="./pages/user-signup.php">Sign up</a></p>
                     </fieldset>
                 </form>
             </div>
 
             <div class="topic-container">
-                <h1>Welcome to Library</h1>
+              <h1>Welcome to Library</h1>
                 <h3><a href="./pages/admin-login.php">Admin Login</a></h3>
             </div>
         </main>

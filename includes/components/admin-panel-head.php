@@ -33,13 +33,13 @@
                 <div class="sidebar-links">
                     <h2>Welcome Admin !</h2>
                     <ul>
-                        <li><span>Book Management</span>
+                        <li><p>Book Management</p>
                             <a href="./new-book.php">Add a New Book</a>
                             <a href="./book-search.php">Book Search & Update</a>
                             <a href="./lending.php">Book Lending</a>
                             <a href="./borrowed.php">Borrowed Books & Recieving</a>
                         </li>
-                        <li><span>User Management</span>
+                        <li><p>User Management</p>
                             <a href="./user-search.php">User Search</a>
                             <a href="./user-details.php">User Details & Update</a>
                         </li>
@@ -60,15 +60,15 @@
             <nav>
                 <img src="../../assets/icons/logo.webp" alt="logo">
                 <div class="sidebar-links">
-                    <h2>Welcome User !</h2>
+                    <h2>Welcome Admin !</h2>
                     <ul>
-                        <li><span>Book Management</span>
+                        <li><p>Book Management</p>
                             <a href="./new-book.php">Add a New Book</a>
                             <a href="./book-search.php">Book Search & Update</a>
                             <a href="./lending.php">Book Lending</a>
                             <a href="./borrowed.php">Borrowed Books & Recieving</a>
                         </li>
-                        <li><span>User Management</span>
+                        <li><p>User Management</p>
                             <a href="./user-search.php">User Search</a>
                             <a href="./user-details.php">User Details & Update</a>
                         </li>

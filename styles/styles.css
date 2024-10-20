@@ -2,7 +2,7 @@
 
 :root {
     --text: #0d080a;
-    --background: #f9f5f6;
+    --background: #dbd9da;
     --primary: #a77280;
     --primary-light: #f4efef;
     --primary-light-2: #e8dbdf;
@@ -52,6 +52,7 @@ li {
 .error{
     color: red;
     text-align: center;
+    font-weight: 700;
 }
 
 .warning{

@@ -53,7 +53,8 @@ if(isset($_GET['token'])){
 <body>
 <?php if (isset($_GET['token'])) { ?>
 <main>
-    <div class="login-container">
+    <div class="login-container forgot-pw">
+        <img src="./assets/icons/logo.webp" alt="logo">
         <h1>Reset Your Password</h1>
         <form action="reset_password.php?token=<?php echo $token; ?>" method="post">
             <fieldset>

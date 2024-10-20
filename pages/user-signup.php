@@ -9,22 +9,28 @@ if (isset($_POST["signup"])) {
     $mobileno = $_POST["mobile"];
     $password = $_POST["password"];
 
-    $sqlInsert = "INSERT INTO users (username,email,mobile_no,password) VALUES ('$username','$email','$mobileno','$password')";
-    $sqlCheck = "SELECT * FROM users WHERE email='$email' OR mobile_no='$mobileno'";
-
-    try {
-        $result = mysqli_query($conn, $sqlCheck);
-        if (mysqli_num_rows($result) > 0) {
-            $error = "<span class=\"error\">User already exists</span>";
-        } else {
-            $result = mysqli_query($conn, $sqlInsert);
-            if ($result) {
-                $response = "<span class=\"sucess\">User created successfully</span>";
+ 
+        $sqlInsert = "INSERT INTO users (username,email,mobile_no,password) VALUES ('$username','$email','$mobileno','$password')";
+        $sqlCheck = "SELECT * FROM users WHERE email='$email' OR mobile_no='$mobileno'";
+    
+        try {
+            $result = mysqli_query($conn, $sqlCheck);
+            if (mysqli_num_rows($result) > 0) {
+                $error = "<span class=\"error\">User already exists</span>";
+            }elseif(!is_numeric($mobileno)){
+                $error = "<span class=\"error\">Phone number must be numeric</span>";
+            } else {
+                $result = mysqli_query($conn, $sqlInsert);
+                if ($result) {
+                    $response = "<span class=\"sucess\">User created successfully</span>";
+                }
             }
+        } catch (Exception $e) {
+            $error = "<span class=\"error\">Something went wrong</span>" . $e;
         }
-    } catch (Exception $e) {
-        $error = "<span class=\"error\">Something went wrong</span>" . $e;
-    }
+    
+
+    
 }
 ?>
 

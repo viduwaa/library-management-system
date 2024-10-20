@@ -3,12 +3,12 @@ include('../../includes/components/user-panel-head.php');
 include('../../includes/functions/util_functions.php');
 
 $html = null;
-
+$htmlDefault = null;
 
 $defaultSQL = "SELECT * FROM books ORDER BY RAND() LIMIT 10";
 $result = mysqli_query($conn, $defaultSQL);
 if (mysqli_num_rows($result) > 0) {
-    $html = renderCard($result);
+    $htmlDefault = renderCard($result);
 }
 
 
@@ -61,10 +61,19 @@ if (isset($_POST['search'])) {
     </div>
 
     <div class="result-wrapper">
-        <h2>Search Results:</h2>
-        <?php echo $html; ?>
+        <?php
+        if (empty($html)) {
+            echo '<h2>Books Available:</h2>';
+            echo $htmlDefault;
+        } else {
+            echo '<h2>Search Results:</h2>';
+            echo $html;
+        }
 
-       <!-- Result Card -->
+        ?>
+
+
+        <!-- Result Card -->
 
         <!-- <div class="search-results">
             <div class="book">
@@ -72,6 +81,7 @@ if (isset($_POST['search'])) {
                     <h4>Book ID - </h4>
                     <h4>Book Name - </h4>
                     <h4>Author- </h4>
+                    <h4>Genres- </h4>
                     <h4>Availability - </h4>
                 </div>
                 <img class="book-img" src="" alt="book img">

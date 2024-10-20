@@ -32,7 +32,7 @@ if (isset($_POST['search-submit'])) {
             $resultBorrowed = mysqli_query($conn, $sqlborrowed);
 
             $html .= '<form action="user-details.php" method="post">
-                        <input type="hidden" name="user-id" value="'.$row['user_id'].'">
+                        <input type="hidden" name="user-id" value="' . $row['user_id'] . '">
                         <tr>
                             <td>' . $row['username'] . '</td>
                             <td>' . $row['mobile_no'] . '</td>
@@ -42,12 +42,15 @@ if (isset($_POST['search-submit'])) {
                         </tr>
                     </form>';
         }
-    }else{
+    } else {
         $html = "<tr><td colspan=\"5\">No results found.</td></tr>";
     }
 }
 
 ?>
+
+<!-- FRONT END PART -->
+
 <main>
     <div>
         <h2>Search for User</h2>
@@ -74,14 +77,14 @@ if (isset($_POST['search-submit'])) {
                     <th>Mobile No.</th>
                     <th>Email</th>
                     <th>Borrowed Books</th>
-                    <th></th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if ($html) {
                     echo $html;
                 } else {
-                    for ($i = 0; $i < 5; $i++){
+                    for ($i = 0; $i < 5; $i++) {
                         echo "<tr>
                                 <td></td>
                                 <td></td>
@@ -91,6 +94,19 @@ if (isset($_POST['search-submit'])) {
                             </tr>";
                     }
                 } ?>
+
+                <!--  TALBE ROW RESPONSE  -->
+
+                <!-- <form action="user-details.php" method="post">
+                    <input type="hidden" name="user-id" value="'.$row['user_id'].'">
+                    <tr>
+                        <td>' . $row['username'] . '</td>
+                        <td>' . $row['mobile_no'] . '</td>
+                        <td>' . $row['email'] . '</td>
+                        <td>' . mysqli_num_rows($resultBorrowed) . '</td>
+                        <td><button type="submit" name="open-details">Details</button></td>
+                    </tr>
+                </form> -->
         </table>
     </div>
 </main>

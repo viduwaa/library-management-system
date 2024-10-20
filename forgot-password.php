@@ -1,19 +1,14 @@
 <?php
 require_once('./includes/functions/db_connect.php');
 require_once('./includes/functions/mail_config.php');
-echo date('U');
 
 $error = '';
 $response = '';
 
 
-// Check if HTTPS is enabled
+//URL
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-
-// Get the server host (domain or IP)
 $host = $_SERVER['HTTP_HOST'];
-
-// Construct the full URL
 $fullUrl = $protocol . '://' . $host;
 
 
@@ -28,7 +23,6 @@ if (isset($_POST['pw-reset'])) {
             //get username
             $checkDetails = mysqli_fetch_assoc($SQLcheckUserResult);
             $username = $checkDetails['username'];
-            echo $username;
             //User found, generating token
             $token = bin2hex(random_bytes(32));
             $expiry = date("U") + 1800;
@@ -43,8 +37,7 @@ if (isset($_POST['pw-reset'])) {
 
             //
         } else {
-            echo 'errpr';
-            $error = "<span class=\"error\">Invalid Mobile no or Password</span>";
+            $error = "<span class=\"error\">Invalid Email or Doesn't exit on our system</span>";
         }
     } catch (\Throwable $th) {
         $error = "Something went wrong" . $th;
@@ -66,11 +59,12 @@ if (isset($_POST['pw-reset'])) {
 </head>
 
 <main>
-    <div class="login-container">
+    <div class="login-container forgot-pw">
+        <img src="./assets/icons/logo.webp" alt="logo">
         <h1>Password Reset</h1>
         <form action="forgot-password.php" method="post">
             <fieldset>
-                <legend>Please login into continue</legend>
+                <legend>Please enter the email to continue</legend>
                 <input type="email" name="email" placeholder="Enter your email" required>
                 <?php if (!empty($response)) {
                     echo $response;

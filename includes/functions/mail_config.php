@@ -32,7 +32,7 @@ function sendVerificationEmail($userEmail, $userName, $verifyLinkWtoken)
         $mail->Timeout    = 60;
 
         // Recipients
-        $mail->setFrom('librarysystem.rusl@gmail.com', 'RUSL Library System');
+        $mail->setFrom('vidusonic@gmail.com', 'RUSL Library System');
         $mail->addAddress($userEmail, $userName);
 
         // Email content

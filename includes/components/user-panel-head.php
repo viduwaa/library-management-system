@@ -49,11 +49,11 @@
             const closeSidebar = document.getElementById('close-sidebar');
             const responsiveNav = document.querySelector('.responsive-nav');
 
-            showSidebar.addEventListener('click', () => {
+            showSidebar.addEventListener('click', function() {
                 responsiveNav.classList.add('show');
             });
 
-            closeSidebar.addEventListener('click', () => {
+            closeSidebar.addEventListener('click', function() {
                 responsiveNav.classList.remove('show');
             });
         </script>

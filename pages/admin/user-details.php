@@ -50,16 +50,16 @@ if (isset($_POST['open-details']) || isset($_POST['direct-search'])) {
         $resultBorrowed = mysqli_query($conn, $sqlBorrowed);
         if (mysqli_num_rows($resultBorrowed) > 0) {
             while ($rowBorrowed = mysqli_fetch_assoc($resultBorrowed)) {
-    
-                if($rowBorrowed['return_date'] == null){
+
+                if ($rowBorrowed['return_date'] == null) {
                     $rowBorrowed['return_date'] = "Not Returned";
                     $returedClass = "";
-                }else{
+                } else {
                     $rowBorrowed['return_date'] = $rowBorrowed['return_date'];
                     $returedClass = "returned";
                 }
 
-                $htmlBooks .= '<div class="book-details '. $returedClass.'">
+                $htmlBooks .= '<div class="book-details ' . $returedClass . '">
                                         <div>
                                             <h3>Book ID - <span class="response">' . $rowBorrowed['books_id'] . '</span></h3>
                                             <h3>Book Title - <span class="response"> ' . $rowBorrowed['name'] . '</span></h3>
@@ -135,6 +135,45 @@ if (isset($_POST['remove'])) {
             }
             ?>
 
+            <!-- SEARCH RESULTS FORM -->
+            <!-- <div>
+                <form action="user-details.php" method="post">
+                    <label for="u-id"> User ID -
+                        <input type="text" id="u-id" value="' . $userRow['user_id'] . '" disabled>
+                        <input type="hidden" name="u-id" value="' . $userRow['user_id'] . '">
+                    </label>
+                    <label for="u-name"> Username -
+                        <input class="edit" type="text" name="u-name" value="' . $userRow['username'] . '" disabled>
+                    </label>
+                    <label for="u-email"> User Email -
+                        <input class="edit" type="text" name="u-email" value="' . $userRow['email'] . '" disabled>
+                    </label>
+                    <label for="u-mobile"> User Mobile No -
+                        <input class="edit" type="text" name="u-mobile" value="' . $userRow['mobile_no'] . '" disabled>
+                    </label>
+                    <div>
+                        <button id="edit">Edit</button>
+                        <button type="submit" name="update">Update</button>
+                        <button type="submit" name="remove">Remove</button>
+                    </div>
+                </form>
+            </div> -->
+
+            <!-- USER BORROWED BOOKS CARD -->
+             
+            <!-- <div class="book-details ' . $returedClass . '">
+                <div>
+                    <h3>Book ID - <span class="response">' . $rowBorrowed['books_id'] . '</span></h3>
+                    <h3>Book Title - <span class="response"> ' . $rowBorrowed['name'] . '</span></h3>
+                    <h3>Borrowed Date - <span class="response"> ' . $rowBorrowed['borrow_date'] . '</span></h3>
+                    <h3>Returned - <span class="response"> ' . $rowBorrowed['return_date'] . '</span></h3>
+                </div>
+                <div>
+                    <img src="' . $rowBorrowed['cover'] . '" alt="">
+                </div>
+
+            </div> -->
+
         </div>
     </div>
 </main>
@@ -148,5 +187,4 @@ if (isset($_POST['remove'])) {
             input.disabled = false;
         })
     })
-
 </script>

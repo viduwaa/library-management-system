@@ -1,37 +1,25 @@
 <?php
 include('../../includes/components/admin-panel-head.php');
 include('../../includes/functions/check_admin.php');
+include('../../includes/functions/util_functions.php');
 
 $error = null;
 $html = null;
 $sucess = null;
 
 
-// Function to process the results of the SQL query
-function processResults($resultBookID) {
-    $html = '';
-    if (mysqli_num_rows($resultBookID) > 0) {
-        while ($row = mysqli_fetch_assoc($resultBookID)) {
-            $checkDue = $row['return_date'] == null ? '<button type="submit" name="recieved">Receive</button>' : $row['return_date'];
-            $html .= '<form action="borrowed.php" method="post">
-                        <tr>
-                            <td>' . $row['book_id'] . '</td>
-                            <td>' . $row['name'] . '</td>
-                            <td>' . $row['username'] . '</td>
-                            <td>' . $row['mobile_no'] . '</td>
-                            <td>' . $row['borrow_date'] . '</td>
-                            <td> 
-                                <input type="hidden" name="b-id" value="' . $row['book_id'] . '">
-                                <input type="hidden" name="u-id" value="' . $row['user_id'] . '">' . $checkDue . '
-                            </td>
-                        </tr>
-                      </form>';
-        }
-    } else {
-        $html .= '<tr><td colspan="6">No results found.</td></tr>';
-    }
-    return $html;
-}
+//default page load data
+$sql = "SELECT bb.*, b.name, u.username, u.mobile_no 
+        FROM borrowed_books bb
+        JOIN books b ON bb.book_id = b.books_id 
+        JOIN users u ON bb.user_id = u.user_id
+        ORDER BY (bb.due_date = CURDATE()) DESC, bb.due_date ASC;";
+
+
+$result = mysqli_query($conn,$sql);
+$html = processResults($result);
+                  
+
 
 // Check if the search form has been submitted
 if (isset($_POST['search-submit'])) {
@@ -144,30 +132,36 @@ if(isset($_POST['recieved'])){
         <table>
             <thead>
                 <tr>
-                    <th>Book ID</th>
-                    <th>Book Name</th>
-                    <th>Username</th>
-                    <th>Mobile No.</th>
-                    <th>Lend Date</th>
-                    <th>Return Date</th>
+                    <th id="book_id">Book ID</th>
+                    <th id="book_name">Book Name</th>
+                    <th id="book_borrower">Username</th>
+                    <th id="book_borrowerNo">Mobile No.</th>
+                    <th id="book_lendDate">Lend Date</th>
+                    <th id="book_due">Due Date</th>
+                    <th id="book_return">Return Date</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if ($html) {
-                    echo $html;
-                } else {
-                    for ($i = 0; $i < 5; $i++){
-                        echo "<tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>";
-                    }
-                } ?>
-                               
+                <?php echo $html; ?>
+
+               <!--  TALBE ROW RESPONSE  -->
+
+                <!-- <form action="borrowed.php" method="post">
+                        <tr>
+                            <td>' . $row['book_id'] . '</td>
+                            <td>' . $row['name'] . '</td>
+                            <td>' . $row['username'] . '</td>
+                            <td>' . $row['mobile_no'] . '</td>
+                            <td>' . $row['borrow_date'] . '</td>
+                            <td '.$showColor.' >' . $row['due_date'] . '</td>
+                            <td> 
+                                <input type="hidden" name="b-id" value="' . $row['book_id'] . '">
+                                <input type="hidden" name="u-id" value="' . $row['user_id'] . '">' . $checkDue . '
+                            </td>
+                        </tr>
+                      </form> -->
+
+                <!-- ------------------ -->
             </tbody>
         </table>
     </div>

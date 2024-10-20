@@ -7,7 +7,7 @@ main{
     justify-content: center;
     align-items: center;
     height: 90dvh;
-    background-color: #f1f1f1;
+    background-color: #ebebeb;
 
     .login-container{
         flex: 1;
@@ -49,11 +49,13 @@ main{
                 transition: all .3s ease;
                 font-size: 1rem;
                 cursor: pointer;
+                background: #d48383;
+                color: #fff;
             }
 
             button:hover{
-                background-color: #d48383;
-                color: #fff;
+                background-color: #b26f6f;
+                color: #fff1f1;
             }
 
             p{
@@ -102,6 +104,12 @@ main{
             }
         }
 
+    }
+
+    .forgot-pw img{
+        margin: auto;
+        width: 200px;
+        padding-block: 1rem;
     }
 
     @media screen and (max-width: 768px){

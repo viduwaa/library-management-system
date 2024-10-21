@@ -12,11 +12,11 @@ if (isset($_POST["book-register"])) {
     if (!is_numeric($book_quantity)) {
         $response = "<span class=\"error\">Book Quantity should be numeric!</span>";
     } else {
-        if (isset($_FILES[" b-image"]) && $_FILES["b-image"]["size"] > 0) {
+        if (isset($_FILES["b-image"]) && $_FILES["b-image"]["size"] > 0) {
             $bookimg_dir = "../../assets/book-images/";
             $book_image = $bookimg_dir . basename($_FILES["b-image"]["name"]);
             $image_type = strtolower(pathinfo($book_image, PATHINFO_EXTENSION));
-            $book_image = $bookimg_dir . uniqid() . date("Ymd-His") . "." . $image_type;
+            $book_image = $bookimg_dir . uniqid(). date("Ymd-His") . "." . $image_type;
             move_uploaded_file($_FILES["b-image"]["tmp_name"], $book_image);
         } else {
             $book_image = "../../assets/icons/empty-cover.webp";

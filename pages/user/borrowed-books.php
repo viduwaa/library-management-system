@@ -2,7 +2,7 @@
 include('../../includes/components/user-panel-head.php');
 
 $html = null;
-$sql = "SELECT bb.*, b.name, b.author , b.cover FROM borrowed_books bb JOIN books b ON bb.book_id = b.books_id WHERE user_id = " . $_SESSION['user-id']. " ORDER BY bb.borrow_date ASC";
+$sql = "SELECT bb.*, b.name, b.author , b.cover FROM borrowed_books bb JOIN books b ON bb.book_id = b.books_id WHERE user_id = " . $_SESSION['user-id']. " ORDER BY bb.return_date ASC";
 
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {

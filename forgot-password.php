@@ -37,7 +37,7 @@ if (isset($_POST['pw-reset'])) {
 
             //
         } else {
-            $error = "<span class=\"error\">Invalid Email or Doesn't exit on our system</span>";
+            $error = "<span class=\"error\">Invalid Email or Doesn't exist on our system</span>";
         }
     } catch (\Throwable $th) {
         $error = "Something went wrong" . $th;

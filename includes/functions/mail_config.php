@@ -25,8 +25,8 @@ function sendVerificationEmail($userEmail, $userName, $verifyLinkWtoken)
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
-        $mail->Username   = ''; // Your Gmail address
-        $mail->Password   = ''; // Your Gmail app password
+        $mail->Username   = 'vidusonic@gmail.com'; // Your Gmail address
+        $mail->Password   = 'hpvsjrcgzcsscbez'; // Your Gmail app password
 
         // Set a longer timeout
         $mail->Timeout    = 60;

@@ -61,6 +61,12 @@ if (isset($_POST['book-update'])) {
         $result = mysqli_query($conn, $sql);
         if ($result) {
             $response = "<h4 class=\"update-success\">Book Updated Successfully !</h4>";
+            echo '<script>
+                    setTimeout(function(){
+                         window.location.href = window.location.href;
+                    }, 1000); 
+                </script>';
+            
         } else {
             $response = "<h4 class=\"error\">Something went wrong !</h4>";
         }
@@ -95,10 +101,10 @@ if (isset($_POST['book-update'])) {
     <div class="result-wrapper">
 
         <?php
-        if(!empty($noBooks)){
+        if (!empty($noBooks)) {
             echo "<h2>Search Results:</h2>";
             echo $noBooks;
-        }elseif (empty($searchResultBooks)) {
+        } elseif (empty($searchResultBooks)) {
             echo "<h2>Most recently added books:</h2>";
             echo $mostRecentbooks;
         } else {
